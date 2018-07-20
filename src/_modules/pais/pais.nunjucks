@@ -1,0 +1,10 @@
+{% macro content(spec) %}
+
+{% set spec = spec or {} %}
+
+<div>
+  <h2>{{ spec.nombre}}</h2>
+  <p>Población: {{ spec.poblacion}}</p>
+  <img src="images/{{spec.img}}" alt="">
+</div>
+{% endmacro %}

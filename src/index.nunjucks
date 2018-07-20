@@ -1,21 +1,32 @@
 {% extends '_layouts/base.nunjucks' %}
 
-{% import "_modules/link/link.nunjucks" as link %}
+<!-- Importamos el módulo de navegación y lo llamamos nav -->
+{% import '_modules/nav/nav.nunjucks' as nav %}
+{% import '_modules/pais/pais.nunjucks' as pais %}
 
 {% block content %}
-<div class="main-container">
-  <div class="yeogurt-info">
-    <h1>Welcome to Yeogurt!</h1>
-    <p>
-      Take a look at the {{link.content({
-        href: 'https://github.com/larsonjj/generator-yeogurt#yeogurt-generator---',
-        text: 'documentation'
-      })}} and start mixing up something awesome.
-    </p>
-    <p>
-      <img src="images/yeogurt-swirl.png" width="75px" class="logo" />
-    </p>
-  </div>
-</div>
-<code class="version">v2.0.1</code>
+  <!--<h1>
+    {{ site.data.ejemplo.paises.pais[0].nombre}}
+  </h1>-->
+  
+  {% for val in site.data.ejemplo.paises.pais %}
+    {{pais.content({
+      nombre: val.nombre,
+      poblacion: val.poblacion,
+      img: val.bandera
+    })}}
+    <hr>
+  {% endfor %}
+  </ul>
+
+  {{ nav.content({
+    class: "rojo",
+    texto: "Hola mondo, estoy usando módulos, y me encanta. Je, ponele.",
+    oli: true
+  })}}
+
+  <a href="contact">Ir a contacto</a><br><br>
+  <!--Las Imágenes no llevan _ en el nombre de carpeta -->
+  <img src="images/gatito3.jpg"/>
+   
 {% endblock %}
